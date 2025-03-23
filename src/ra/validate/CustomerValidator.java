@@ -26,22 +26,7 @@ public class CustomerValidator {
                         }
                     }
                     break;
-                case "FirstName":
-                    for(int i = 0; i < CustomerApplication.currentCustomerIndex; i++){
-                        if(CustomerApplication.arrCustomers[i].getFirstName().equals(value)){
-                            isExit = true;
-                            break;
-                        }
-                    }
-                break;
-                case "LastName":
-                    for(int i = 0; i < CustomerApplication.currentCustomerIndex; i++){
-                        if(CustomerApplication.arrCustomers[i].getLastName().equals(value)){
-                            isExit = true;
-                            break;
-                        }
-                    }
-                break;
+
                 case "dateOfBirth":
                     for(int i = 0; i < CustomerApplication.currentCustomerIndex; i++){
                         if(CustomerApplication.arrCustomers[i].getDateOfBirth().equals(value)){
@@ -58,7 +43,7 @@ public class CustomerValidator {
                         }
                     }
                 break;
-                case "phoneNumber":
+                case "PhoneNumber":
                     for(int i = 0; i < CustomerApplication.currentCustomerIndex; i++){
                         if(CustomerApplication.arrCustomers[i].getPhoneNumber().equals(value)){
                             isExit = true;
@@ -66,7 +51,7 @@ public class CustomerValidator {
                         }
                     }
                 break;
-                case "email":
+                case "Email":
                     for(int i = 0; i < CustomerApplication.currentCustomerIndex; i++){
                         if(CustomerApplication.arrCustomers[i].getEmail().equals(value)){
                             isExit = true;

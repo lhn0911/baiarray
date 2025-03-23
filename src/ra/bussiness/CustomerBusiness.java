@@ -2,6 +2,8 @@ package ra.bussiness;
 
 import ra.persentation.CustomerApplication;
 import ra.entity.Customer;
+import ra.validate.CustomerValidator;
+import ra.validate.StringRule;
 import ra.validate.validator;
 import java.util.Arrays;
 import java.util.Comparator;
@@ -56,33 +58,42 @@ public class CustomerBusiness {
                     System.out.println("1. Tên");
                     System.out.println("2. Họ");
                     System.out.println("3. Năm sinh");
-                    System.out.println("4. Loại khách hàng");
-                    System.out.println("5. Số điện thoại");
-                    System.out.println("6. Thoát");
+                    System.out.println("4. Giới tính khách hàng");
+                    System.out.println("5. Email");
+                    System.out.println("6. Loại khách hàng");
+                    System.out.println("7. Số điện thoại");
+                    System.out.println("8. Thoát");
                     int choice = validator.validateInputInt(sc, "Nhập lựa chọn:");
-
                     switch (choice) {
                         case 1:
                             System.out.println("Nhập tên mới:");
-                            customer.setFirstName(sc.next());
+                            customer.setFirstName(validator.validateInputString(sc, "Nhập vào tên khách hàng", new StringRule(1,50)));
                             break;
                         case 2:
                             System.out.println("Nhập họ mới:");
-                            customer.setLastName(sc.next());
+                            customer.setLastName(validator.validateInputString(sc, "Nhập vào họ khách hàng", new StringRule(1,30)));
                             break;
                         case 3:
                             System.out.println("Nhập năm sinh mới:");
-                            customer.setDateOfBirth(sc.next());
+                            customer.setDateOfBirth(CustomerValidator.validateCustomerId(sc,"Nhập vào ngày sinh","\\d{2}/\\d{2}/\\d{4}"));
                             break;
                         case 4:
-                            System.out.println("Nhập loại khách hàng mới:");
-                            customer.setCustomerType(sc.next());
+                            System.out.println("Nhập giới tính khách hàng mới:");
+                            customer.setGender(validator.validateInputBoolean(sc,"Nhập giới tính"));
                             break;
                         case 5:
-                            System.out.println("Nhập số điện thoại mới:");
-                            customer.setPhoneNumber(sc.next());
+                            System.out.println("Nhập email khách hàng mới:");
+                            customer.setEmail(CustomerValidator.validateCustomerId(sc,"Nhập email","^[a-zA-Z0-9._%+-]+@gmail\\.com$"));
                             break;
                         case 6:
+                            System.out.println("Nhập loại khách hàng mới:");
+                            customer.setCustomerType(validator.validateInputString(sc,"Nhập loại khách hàng",new StringRule(0,255)));
+                            break;
+                        case 7:
+                            System.out.println("Nhập số điện thoại mới:");
+                            customer.setPhoneNumber(CustomerValidator.validateCustomerId(sc,"Nhập số điện thoại", "(((\\+|)84)|0)(3|5|7|8|9)+([0-9]{8})"));
+                            break;
+                        case 8:
                             isEditing = false;
                             break;
                         default:

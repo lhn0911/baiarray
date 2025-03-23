@@ -131,7 +131,7 @@ public class Customer implements IApp {
         return CustomerValidator.isCustomerExit(sc, LastName, "LastName");
     }
     public String inputDateOfBirth(Scanner sc) {
-        String DateOfBirth = CustomerValidator.validateCustomerId(sc,"Nhập vào ngày sinh","\\d{2}\\d{2}\\d{4}");
+        String DateOfBirth = CustomerValidator.validateCustomerId(sc,"Nhập vào ngày sinh","\\d{2}/\\d{2}/\\d{4}");
         return  CustomerValidator.isCustomerExit(sc, DateOfBirth, "DateOfBirth");
     }
     public String  inputAddress(Scanner sc) {
